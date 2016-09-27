@@ -1,0 +1,40 @@
+@mixin lightSpeed() {
+  .fx-lightSpeed {
+    @include animation-timing-function(ease-out);
+    @include animation-name(lightSpeed);
+  }
+  @include keyframes(lightSpeed) {
+    0% {
+      @include transform(translate3d(100%, 0, 0) skewX(-30deg));
+      opacity: 0;
+    }
+    60% {
+      @include transform(skewX(20deg));
+      opacity: 1;
+    }
+    80% {
+      @include transform(skewX(-5deg));
+      opacity: 1;
+    }
+    100% {
+      @include transform(none);
+      opacity: 1;
+    }
+  }
+}
+
+@mixin lightSpeedOut() {
+  .fx-lightSpeedOut {
+    @include animation-timing-function(ease-in);
+    @include animation-name(lightSpeedOut);
+  }
+  @include keyframes(lightSpeedOut) {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      @include transform(translate3d(100%, 0, 0) skewX(30deg));
+      opacity: 0;
+    }
+  }
+}

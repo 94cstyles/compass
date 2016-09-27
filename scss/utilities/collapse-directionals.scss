@@ -1,0 +1,37 @@
+@charset "UTF-8";
+@function _collapse-directionals_calc_wc($value, $proportion) {
+    @if $value != null and $value != auto {
+        @return $value * $proportion;
+    }
+    @return $value;
+}
+
+@function _collapse-directionals($values, $proportion: 1) {
+    $output: null;
+    $a: nth($values, 1);
+    $b: if(length($values) < 2, $a, nth($values, 2));
+    $c: if(length($values) < 3, $a, nth($values, 3));
+    $d: if(length($values) < 2, $a, nth($values, if(length($values) < 4, 2, 4)));
+    @if $a == 0 {
+        $a: 0;
+    }
+    @if $b == 0 {
+        $b: 0;
+    }
+    @if $c == 0 {
+        $c: 0;
+    }
+    @if $d == 0 {
+        $d: 0;
+    }
+    @if $a == $b and $a == $c and $a == $d {
+        $output: _collapse-directionals_calc_wc($a, $proportion);
+    } @else if $a == $c and $b == $d {
+        $output: _collapse-directionals_calc_wc($a, $proportion) _collapse-directionals_calc_wc($b, $proportion);
+    } @else if $b == $d {
+        $output: _collapse-directionals_calc_wc($a, $proportion) _collapse-directionals_calc_wc($b, $proportion) _collapse-directionals_calc_wc($c, $proportion);
+    } @else {
+        $output: _collapse-directionals_calc_wc($a, $proportion) _collapse-directionals_calc_wc($b, $proportion) _collapse-directionals_calc_wc($c, $proportion) _collapse-directionals_calc_wc($d, $proportion);
+    }
+    @return $output;
+}

@@ -1,0 +1,56 @@
+@mixin ____slide($name, $type, $transform) {
+    .fx-#{$name} {
+        @include animation-name($name);
+    }
+    @include keyframes($name) {
+        0% {
+            @if $type == in {
+                @include transform($transform);
+                visibility: visible;
+            } @else {
+                @include transform(translate3d(0, 0, 0));
+            }
+        }
+
+        100% {
+            @if $type == in {
+                @include transform(translate3d(0, 0, 0));
+            } @else {
+                @include transform($transform);
+                visibility: hidden;
+            }
+        }
+    }
+}
+
+@mixin slideInDown($move: -100%, $name: slideInDown) {
+    @include ____slide($name, in, translate3d(0, $move, 0));
+}
+
+@mixin slideInLeft($move: -100%, $name: slideInLeft) {
+    @include ____slide($name, in, translate3d($move, 0, 0));
+}
+
+@mixin slideInRight($move: 100%, $name: slideInRight) {
+    @include ____slide($name, in, translate3d($move, 0, 0));
+}
+
+@mixin slideInUp($move: 100%, $name: slideInUp) {
+    @include ____slide($name, in, translate3d(0, $move, 0));
+}
+
+@mixin slideOutDown($move: 100%, $name: slideOutDown) {
+    @include ____slide($name, out, translate3d(0, $move, 0));
+}
+
+@mixin slideOutLeft($move: -100%, $name: slideOutLeft) {
+    @include ____slide($name, out, translate3d($move, 0, 0));
+}
+
+@mixin slideOutRight($move: 100%, $name: slideOutRight) {
+    @include ____slide($name, out, translate3d($move, 0, 0));
+}
+
+@mixin slideOutUp($move: -100%, $name: slideOutUp) {
+    @include ____slide($name, out, translate3d(0, $move, 0));
+}

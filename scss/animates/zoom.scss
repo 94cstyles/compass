@@ -1,0 +1,140 @@
+@mixin ____zoomIn($name, $transformOne, $transformTwo) {
+  .fx-#{$name} {
+    @include animation-name($name);
+  }
+  @include keyframes($name) {
+    0% {
+      opacity: 0;
+      @include transform($transformOne);
+      @include animation-timing-function(cubic-bezier(0.550, 0.055, 0.675, 0.190));
+    }
+    60% {
+      opacity: 1;
+      @include transform($transformTwo);
+      @include animation-timing-function(cubic-bezier(0.175, 0.885, 0.320, 1));
+    }
+  }
+}
+
+@mixin zoomIn() {
+  .fx-zoomIn {
+    @include animation-name(zoomIn);
+  }
+  @include keyframes(zoomIn) {
+    0% {
+      opacity: 0;
+      @include transform(scale3d(.3, .3, .3));
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+}
+
+@mixin zoomInDown() {
+  @include ____zoomIn(zoomInDown, scale3d(.1, .1, .1) translate3d(0, -1000px, 0), scale3d(.475, .475, .475) translate3d(0, 60px, 0));
+}
+
+@mixin zoomInLeft() {
+  @include ____zoomIn(zoomInLeft, scale3d(.1, .1, .1) translate3d(-1000px, 0, 0), scale3d(.475, .475, .475) translate3d(10px, 0, 0));
+}
+
+@mixin zoomInRight() {
+  @include ____zoomIn(zoomInRight, scale3d(.1, .1, .1) translate3d(1000px, 0, 0), scale3d(.475, .475, .475) translate3d(-10px, 0, 0));
+}
+
+@mixin zoomInUp() {
+  @include ____zoomIn(zoomInUp, scale3d(.1, .1, .1) translate3d(0, 1000px, 0), scale3d(.475, .475, .475) translate3d(0, -60px, 0));
+}
+
+@mixin zoomOut() {
+  .fx-zoomOut {
+    @include animation-name(zoomOut);
+  }
+  @include keyframes(zoomOut) {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+      @include transform(scale3d(.3, .3, .3));
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
+
+@mixin zoomOutDown() {
+  .fx-zoomOutDown {
+    @include animation-name(zoomOutDown);
+  }
+  @include keyframes(zoomOutDown) {
+    40% {
+      opacity: 1;
+      @include transform(scale3d(.475, .475, .475) translate3d(0, -60px, 0));
+      @include animation-timing-function(cubic-bezier(0.550, 0.055, 0.675, 0.190));
+    }
+
+    100% {
+      opacity: 0;
+      @include transform(scale3d(.1, .1, .1) translate3d(0, 2000px, 0));
+      @include transform-origin(center bottom);
+      @include animation-timing-function(cubic-bezier(0.175, 0.885, 0.320, 1));
+    }
+  }
+}
+
+@mixin zoomOutLeft() {
+  .fx-zoomOutLeft {
+    @include animation-name(zoomOutLeft);
+  }
+  @include keyframes(zoomOutLeft) {
+    40% {
+      opacity: 1;
+      @include transform(scale3d(.475, .475, .475) translate3d(42px, 0, 0));
+    }
+    100% {
+      opacity: 0;
+      @include transform(scale(.1) translate3d(-2000px, 0, 0));
+      @include transform-origin(left center);
+    }
+  }
+}
+
+@mixin zoomOutRight() {
+  .fx-zoomOutRight {
+    @include animation-name(zoomOutRight);
+  }
+  @include keyframes(zoomOutRight) {
+    40% {
+      opacity: 1;
+      @include transform(scale3d(.475, .475, .475) translate3d(-42px, 0, 0));
+    }
+    100% {
+      opacity: 0;
+      @include transform(scale(.1) translate3d(2000px, 0, 0));
+      @include transform-origin(right center);
+    }
+  }
+}
+
+@mixin zoomOutUp() {
+  .fx-zoomOutUp {
+    @include animation-name(zoomOutUp);
+  }
+  @include keyframes(zoomOutUp) {
+    40% {
+      opacity: 1;
+      @include transform(scale3d(.475, .475, .475) translate3d(0, 60px, 0));
+      @include animation-timing-function(cubic-bezier(0.550, 0.055, 0.675, 0.190));
+    }
+
+    100% {
+      opacity: 0;
+      @include transform(scale3d(.1, .1, .1) translate3d(0, -2000px, 0));
+      @include transform-origin(center bottom);
+      @include animation-timing-function(cubic-bezier(0.175, 0.885, 0.320, 1));
+    }
+  }
+}

@@ -1,0 +1,1 @@
+String.prototype.includes||(String.prototype.includes=function(e,t){"use strict";return typeof t!="number"&&(t=0),t+e.length>this.length?!1:this.indexOf(e,t)!==-1});

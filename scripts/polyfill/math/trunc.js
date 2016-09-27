@@ -1,0 +1,1 @@
+Math.trunc=Math.trunc||function(e){return e<0?Math.ceil(e):Math.floor(e)};

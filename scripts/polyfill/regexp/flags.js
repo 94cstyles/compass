@@ -1,0 +1,1 @@
+RegExp.prototype.flags===undefined&&Object.defineProperty(RegExp.prototype,"flags",{configurable:!0,get:function(){return this.toString().match(/[gimuy]*$/)[0]}});

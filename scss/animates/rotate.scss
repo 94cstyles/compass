@@ -1,0 +1,69 @@
+@mixin ____rotate($name, $type, $origin, $transform) {
+  .fx-#{$name} {
+    @include animation-name($name);
+  }
+  @include keyframes($name) {
+    0% {
+      @if $type == in {
+        @include transform-origin($origin);
+        @include transform($transform);
+        opacity: 0;
+      } @else {
+        @include transform-origin($origin);
+        opacity: 1;
+      }
+    }
+
+    100% {
+      @if $type == in {
+        @include transform-origin($origin);
+        @include transform(none);
+        opacity: 1;
+      } @else {
+        @include transform-origin($origin);
+        @include transform($transform);
+        opacity: 0;
+      }
+    }
+  }
+}
+
+@mixin rotateIn() {
+  @include ____rotate(rotateIn, in, center, rotate3d(0, 0, 1, -200deg));
+}
+
+@mixin rotateInDownLeft() {
+  @include ____rotate(rotateInDownLeft, in, left bottom, rotate3d(0, 0, 1, -45deg));
+}
+
+@mixin rotateInDownRight() {
+  @include ____rotate(rotateInDownRight, in, right bottom, rotate3d(0, 0, 1, 45deg));
+}
+
+@mixin rotateInUpLeft() {
+  @include ____rotate(rotateInUpLeft, in, left bottom, rotate3d(0, 0, 1, 45deg));
+}
+
+@mixin rotateInUpRight() {
+  @include ____rotate(rotateInUpRight, in, right bottom, rotate3d(0, 0, 1, -90deg));
+}
+
+@mixin rotateOut() {
+  @include ____rotate(rotateOut, out, center, rotate3d(0, 0, 1, 200deg));
+}
+
+@mixin rotateOutDownLeft() {
+  @include ____rotate(rotateOutDownLeft, out, left bottom, rotate3d(0, 0, 1, 45deg));
+}
+
+@mixin rotateOutDownRight() {
+  @include ____rotate(rotateOutDownRight, out, right bottom, rotate3d(0, 0, 1, -45deg));
+}
+
+@mixin rotateOutUpLeft() {
+  @include ____rotate(rotateOutUpLeft, out, left bottom, rotate3d(0, 0, 1, -45deg));
+}
+
+@mixin rotateOutUpRight() {
+  @include ____rotate(rotateOutUpRight, out, right bottom, rotate3d(0, 0, 1, 90deg));
+}

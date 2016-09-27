@@ -1,0 +1,154 @@
+@mixin ____bounceIn($name, $transformOne, $transformTwo, $transformThree, $transformFour) {
+  .fx-#{$name} {
+    @include animation-name($name);
+  }
+  @include keyframes(bounceInDown) {
+    0%, 60%, 75%, 90%, 100% {
+      @include animation-timing-function(cubic-bezier(0.215, 0.610, 0.355, 1.000));
+    }
+
+    0% {
+      opacity: 0;
+      @include transform($transformOne);
+    }
+
+    60% {
+      opacity: 1;
+      @include transform($transformTwo);
+    }
+
+    75% {
+      @include transform($transformThree);
+    }
+
+    90% {
+      @include transform($transformFour);
+    }
+
+    100% {
+      @include transform(none);
+    }
+  }
+}
+
+@mixin ____bounceOutOne($name, $transformOne, $transformTwo) {
+  .fx-#{$name} {
+    @include animation-name($name);
+  }
+  @include keyframes($name) {
+    20% {
+      opacity: 1;
+      @include transform(translate3d(20px, 0, 0));
+    }
+    100% {
+      opacity: 0;
+      @include transform(translate3d(-2000px, 0, 0));
+    }
+  }
+}
+
+@mixin ____bounceOutTwo($name, $transformOne, $transformTwo, $transformThree) {
+  .fx-#{$name} {
+    @include animation-name($name);
+  }
+  @include keyframes($name) {
+    20% {
+      @include transform($transformOne);
+    }
+
+    40%, 45% {
+      opacity: 1;
+      @include transform($transformTwo);
+    }
+
+    100% {
+      opacity: 0;
+      @include transform($transformThree);
+    }
+  }
+}
+
+@mixin bounceIn() {
+  .fx-bounceIn {
+    @include prefixer(animation-duration, .75s);
+    @include animation-name(bounceIn);
+  }
+  @include keyframes(bounceIn) {
+    0%, 20%, 40%, 60%, 80%, 100% {
+      @include animation-timing-function(cubic-bezier(0.215, 0.610, 0.355, 1.000));
+    }
+    0% {
+      opacity: 0;
+      @include transform(scale3d(.3, .3, .3));
+    }
+    20% {
+      @include transform(scale3d(1.1, 1.1, 1.1));
+    }
+    40% {
+      @include transform(scale3d(.9, .9, .9));
+    }
+    60% {
+      opacity: 1;
+      @include transform(scale3d(1.03, 1.03, 1.03));
+    }
+    80% {
+      @include transform(scale3d(.97, .97, .97));
+    }
+    100% {
+      opacity: 1;
+      @include transform(scale3d(1, 1, 1));
+    }
+  }
+}
+
+@mixin bounceInDown() {
+  @include ____bounceIn(bounceInDown, translate3d(0, -3000px, 0), translate3d(0, 25px, 0), translate3d(0, -10px, 0), translate3d(0, 5px, 0));
+}
+
+@mixin bounceInLeft() {
+  @include ____bounceIn(bounceInLeft, translate3d(-3000px, 0, 0), translate3d(25px, 0, 0), translate3d(-10px, 0, 0), translate3d(5px, 0, 0));
+}
+
+@mixin bounceInRight() {
+  @include ____bounceIn(bounceInRight, translate3d(3000px, 0, 0), translate3d(-25px, 0, 0), translate3d(10px, 0, 0), translate3d(-5px, 0, 0));
+}
+
+@mixin bounceInUp() {
+  @include ____bounceIn(bounceInUp, translate3d(0, 3000px, 0), translate3d(0, -20px, 0), translate3d(0, 10px, 0), translate3d(0, -5px, 0));
+}
+
+@mixin bounceOut() {
+  .fx-bounceOut {
+    @include prefixer(animation-duration, .75s);
+    @include animation-name(bounceOut);
+  }
+  @include keyframes(bounceOut) {
+    20% {
+      @include transform(scale3d(.9, .9, .9));
+    }
+    50%, 55% {
+      opacity: 1;
+      @include transform(scale3d(1.1, 1.1, 1.1));
+    }
+    100% {
+      opacity: 0;
+      @include transform(scale3d(.3, .3, .3));
+    }
+  }
+}
+
+@mixin bounceOutDown() {
+  @include ____bounceOutTwo(bounceOutDown, translate3d(0, 10px, 0), translate3d(0, -20px, 0), translate3d(0, 2000px, 0));
+}
+
+@mixin bounceOutUp() {
+  @include ____bounceOutTwo(bounceOutUp, translate3d(0, -10px, 0), translate3d(0, 20px, 0), translate3d(0, -2000px, 0));
+}
+
+@mixin bounceOutLeft() {
+  @include ____bounceOutOne(bounceOutLeft, translate3d(20px, 0, 0), translate3d(-2000px, 0, 0));
+}
+
+@mixin bounceOutRight() {
+  @include ____bounceOutOne(bounceOutRight, translate3d(-20px, 0, 0), translate3d(2000px, 0, 0));
+}

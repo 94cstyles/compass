@@ -1,0 +1,26 @@
+@charset "UTF-8";
+@mixin hide-text() {
+    overflow: hidden;
+    text-indent: 101%;
+    white-space: nowrap;
+}
+
+@mixin hide-visually($toggle: hide) {
+    @if $toggle == "hide" {
+        border: 0;
+        clip: rect(1px, 1px, 1px, 1px);
+        clip-path: circle(1% at 1% 1%);
+        height: 1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    } @else if $toggle == "unhide" {
+        clip: auto;
+        clip-path: none;
+        height: auto;
+        overflow: visible;
+        position: static;
+        width: auto;
+    }
+}

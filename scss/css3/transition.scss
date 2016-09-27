@@ -1,0 +1,57 @@
+@charset "UTF-8";
+@mixin transition($properties...) {
+    $needs-prefixes: false;
+    $webkit: ();
+    $spec: ();
+
+    @each $list in $properties {
+        @if nth($list, 1) == "transform" {
+            $needs-prefixes: true;
+            $list1: -webkit-transform;
+            $list2: ();
+
+            @each $var in $list {
+                $list2: join($list2, $var);
+
+                @if $var != "transform" {
+                    $list1: join($list1, $var);
+                }
+            }
+
+            $webkit: append($webkit, $list1);
+            $spec: append($spec, $list2);
+        } @else {
+            $webkit: append($webkit, $list, comma);
+            $spec: append($spec, $list, comma);
+        }
+    }
+
+    @if $needs-prefixes {
+        -webkit-transition: $webkit;
+        transition: $spec;
+    } @else {
+        @if length($properties) >= 1 {
+            @include prefixer(transition, $properties, webkit spec);
+        } @else {
+            @include prefixer(transition, $transition-default, webkit spec);
+        }
+    }
+}
+
+@mixin transition-property($properties...) {
+    -webkit-transition-property: _transition-property-names($properties, "webkit");
+    transition-property: _transition-property-names($properties, false);
+}
+
+@mixin transition-duration($times...) {
+    @include prefixer(transition-duration, $times, webkit spec);
+}
+
+@mixin transition-timing-function($motions...) {
+    // ease | linear | ease-in | ease-out | ease-in-out | cubic-bezier()
+    @include prefixer(transition-timing-function, $motions, webkit spec);
+}
+
+@mixin transition-delay($times...) {
+    @include prefixer(transition-delay, $times, webkit spec);
+}

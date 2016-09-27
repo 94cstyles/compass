@@ -1,0 +1,244 @@
+@mixin bounce() {
+    .fx-bounce {
+        @include animation-name(bounce);
+        @include transform-origin(center bottom);
+    }
+    @include keyframes(bounce) {
+        0%, 20%, 53%, 80%, 100% {
+            @include animation-timing-function(cubic-bezier(0.215, 0.610, 0.355, 1.000));
+            @include transform(translate3d(0, 0, 0));
+        }
+        40%, 43% {
+            @include animation-timing-function(cubic-bezier(0.755, 0.050, 0.855, 0.060));
+            @include transform(translate3d(0, -30px, 0));
+        }
+        70% {
+            @include animation-timing-function(cubic-bezier(0.755, 0.050, 0.855, 0.060));
+            @include transform(translate3d(0, -15px, 0));
+        }
+        90% {
+            @include transform(translate3d(0, -4px, 0));
+        }
+    }
+}
+
+@mixin flash($number: 2) {
+    .fx-flash {
+        @include animation-name(flash);
+    }
+    $show: "0%";
+    $hide: null;
+    $single: 100 / $number;
+
+    @for $i from 1 through $number {
+        $show: $show, "#{$single * $i}%";
+        @if $hide == null {
+            $hide: "#{$single / 2}%";
+        } @else {
+            $hide: $hide, "#{($single / 2) + ($i - 1) * $single}%";
+        }
+    }
+
+    @include keyframes(flash) {
+        #{$show} {
+            opacity: 1;
+        }
+        #{$hide} {
+            opacity: 0;
+        }
+    }
+}
+
+@mixin pulse() {
+    .fx-pulse {
+        @include animation-name(pulse);
+    }
+    @include keyframes(pulse) {
+        0% {
+            @include transform(scale3d(1, 1, 1));
+        }
+        50% {
+            @include transform(scale3d(1.05, 1.05, 1.05));
+        }
+        100% {
+            @include transform(scale3d(1, 1, 1));
+        }
+    }
+}
+
+@mixin rubberBand() {
+    .fx-rubberBand {
+        @include animation-name(rubberBand);
+    }
+    @include keyframes(rubberBand) {
+        0% {
+            @include transform(scale3d(1, 1, 1));
+        }
+        30% {
+            @include transform(scale3d(1.25, 0.75, 1));
+        }
+        40% {
+            @include transform(scale3d(0.75, 1.25, 1));
+        }
+        50% {
+            @include transform(scale3d(1.15, 0.85, 1));
+        }
+        65% {
+            @include transform(scale3d(.95, 1.05, 1));
+        }
+        75% {
+            @include transform(scale3d(1.05, .95, 1));
+        }
+        100% {
+            @include transform(scale3d(1, 1, 1));
+        }
+    }
+}
+
+//$number >= 2
+@mixin shake($number: 5) {
+    .fx-shake {
+        @include animation-name(shake);
+    }
+    $left: null;
+    $right: null;
+    $single: 100 / $number;
+
+    @for $i from 1 through $number {
+        @if $left == null {
+            $left: "#{$single / 2}%";
+        } @else {
+            $left: $left, "#{($single / 2) + ($i - 1) * $single}%";
+        }
+
+        @if($i < $number){
+            @if $right == null {
+                $right: "#{$single}%";
+            } @else {
+                $right: $right, "#{$single + ($i - 1) * $single}%";
+            }
+        }
+    }
+    @include keyframes(shake) {
+        0%, 100% {
+            @include transform(translate3d(0, 0, 0));
+        }
+
+        #{$left} {
+            @include transform(translate3d(-10px, 0, 0));
+        }
+
+        #{$right} {
+            @include transform(translate3d(10px, 0, 0));
+        }
+    }
+}
+
+@mixin swing() {
+    .fx-swing {
+        @include animation-name(swing);
+        @include transform-origin(top center);
+    }
+    @include keyframes(swing) {
+        20% {
+            @include transform(rotate3d(0, 0, 1, 15deg));
+        }
+        40% {
+            @include transform(rotate3d(0, 0, 1, -10deg));
+        }
+        60% {
+            @include transform(rotate3d(0, 0, 1, 5deg));
+        }
+        80% {
+            @include transform(rotate3d(0, 0, 1, -5deg));
+        }
+        100% {
+            @include transform(rotate3d(0, 0, 1, 0deg));
+        }
+    }
+}
+
+@mixin tada() {
+    .fx-tada {
+        @include animation-name(tada);
+    }
+    @include keyframes(tada) {
+        0% {
+            @include transform(scale3d(1, 1, 1));
+        }
+        10%, 20% {
+            @include transform(scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg));
+        }
+        30%, 50%, 70%, 90% {
+            @include transform(scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg));
+        }
+        40%, 60%, 80% {
+            @include transform(scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg));
+        }
+        100% {
+            @include transform(scale3d(1, 1, 1));
+        }
+    }
+}
+
+@mixin wobble() {
+    .fx-wobble {
+        @include animation-name(wobble);
+    }
+    @include keyframes(wobble) {
+        0% {
+            @include transform(none);
+        }
+        15% {
+            @include transform(translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg));
+        }
+        30% {
+            @include transform(translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg));
+        }
+        45% {
+            @include transform(translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg));
+        }
+        60% {
+            @include transform(translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg));
+        }
+        75% {
+            @include transform(translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg));
+        }
+        100% {
+            @include transform(none);
+        }
+    }
+}
+
+@mixin jello() {
+    .fx-jello {
+        @include animation-name(jello);
+        @include transform-origin(center);
+    }
+    @include keyframes(jello) {
+        0%, 11.1%, 100% {
+            @include transform(none);
+        }
+        22.2% {
+            @include transform(skewX(-12.5deg) skewY(-12.5deg));
+        }
+        33.3% {
+            @include transform(skewX(6.25deg) skewY(6.25deg));
+        }
+        44.4% {
+            @include transform(skewX(-3.125deg) skewY(-3.125deg));
+        }
+        55.5% {
+            @include transform(skewX(1.5625deg) skewY(1.5625deg));
+        }
+        66.6% {
+            @include transform(skewX(-0.78125deg) skewY(-0.78125deg));
+        }
+        77.7% {
+            @include transform(skewX(0.390625deg) skewY(0.390625deg));
+        }
+        88.8% {
+            @include transform(skewX(-0.1953125deg) skewY(-0.1953125deg));
+        }
+    }
+}

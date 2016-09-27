@@ -1,0 +1,1 @@
+Math.sign=Math.sign||function(e){return e=+e,e===0||isNaN(e)?e:e>0?1:-1};

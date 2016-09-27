@@ -1,0 +1,10 @@
+@charset "UTF-8";
+//http://www.sassmeister.com/gist/aab18d153358de881067c43d3bf3dab2
+@function tint($color, $percent) {
+    @return mix(#fff, $color, $percent);
+}
+
+//http://www.sassmeister.com/gist/44323394b87541b14afa812e171c45fe
+@function shade($color, $percent) {
+    @return mix(#000, $color, $percent);
+}

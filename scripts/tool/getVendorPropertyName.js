@@ -1,0 +1,1 @@
+function getVendorPropertyName(a){var b=document.documentElement.style,c=["moz","webkit","o","ms"];if(a in b)return a;for(var d=a.charAt(0).toUpperCase()+a.substr(1),e=c.length;e--;){var f=c[e],g=f+d;if(g in b)return g}return null}

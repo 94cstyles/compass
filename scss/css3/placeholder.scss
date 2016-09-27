@@ -1,0 +1,12 @@
+@charset "UTF-8";
+@mixin placeholder {
+    $placeholders: ":-webkit-input" ":-moz" "-ms-input";
+    @each $placeholder in $placeholders {
+        &:#{$placeholder}-placeholder {
+            @content;
+            @if $placeholder == ':-moz' {
+                opacity: 1;
+            }
+        }
+    }
+}

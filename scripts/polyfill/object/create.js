@@ -1,0 +1,1 @@
+typeof Object.create!="function"&&(Object.create=function(){var e=function(){};return function(t){if(arguments.length>1)throw Error("Second argument not supported");if(t!==Object(t)&&t!==null)throw TypeError("Argument must be an object or null");if(t===null)throw Error("null [[Prototype]] not supported");e.prototype=t;var n=new e;return e.prototype=null,n}}());

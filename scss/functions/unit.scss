@@ -1,0 +1,17 @@
+@charset "UTF-8";
+@function px($px) {
+    @if not unitless($px) {
+        $px: strip-units($px);
+    }
+    @return $px / $designRatio * 1px;
+}
+@function rem($px) {
+    @if not unitless($px) {
+        $px: strip-units($px);
+    }
+    $width: $designWidth;
+    @if not unitless($width) {
+        $width: strip-units($width);
+    }
+    @return $px / ($width / 10) * 1rem;
+}

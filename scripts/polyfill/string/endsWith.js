@@ -1,0 +1,1 @@
+String.prototype.endsWith||(String.prototype.endsWith=function(e,t){var n=this.toString();if(typeof t!="number"||!isFinite(t)||Math.floor(t)!==t||t>n.length)t=n.length;t-=e.length;var r=n.indexOf(e,t);return r!==-1&&r===t});

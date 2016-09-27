@@ -1,0 +1,1 @@
+Date.prototype.toLocaleFormat||function(){Date.prototype.toLocaleFormat=function(e){return this.format(e)}}();

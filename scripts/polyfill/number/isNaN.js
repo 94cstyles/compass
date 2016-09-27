@@ -1,0 +1,1 @@
+Number.isNaN=Number.isNaN||function(e){return typeof e=="number"&&isNaN(e)},Number.isNaN=Number.isNaN||function(e){return e!==e};

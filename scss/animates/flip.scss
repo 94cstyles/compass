@@ -1,0 +1,124 @@
+@mixin flip() {
+  .fx-flip {
+    @include animation-name(flip);
+  }
+  @include keyframes(flip) {
+    0% {
+      @include transform(perspective(400px) rotate3d(0, 1, 0, -360deg));
+      @include animation-timing-function(ease-out);
+    }
+    40% {
+      @include transform(perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg));
+      @include animation-timing-function(ease-out);
+    }
+    50% {
+      @include transform(perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg));
+      @include animation-timing-function(ease-in);
+    }
+    80% {
+      @include transform(perspective(400px) scale3d(.95, .95, .95));
+      @include animation-timing-function(ease-in);
+    }
+    100% {
+      @include transform(perspective(400px));
+      @include animation-timing-function(ease-in);
+    }
+  }
+}
+
+@mixin flipInX() {
+  .fx-flipInX {
+    @include animation-name(flipInX);
+  }
+  @include keyframes(flipInX) {
+    0% {
+      @include transform(perspective(400px) rotate3d(1, 0, 0, 90deg));
+      @include animation-timing-function(ease-in);
+      opacity: 0;
+    }
+    40% {
+      @include transform(perspective(400px) rotate3d(1, 0, 0, -20deg));
+      @include animation-timing-function(ease-in);
+    }
+    60% {
+      @include transform(perspective(400px) rotate3d(1, 0, 0, 10deg));
+      opacity: 1;
+    }
+    80% {
+      @include transform(perspective(400px) rotate3d(1, 0, 0, -5deg));
+    }
+    100% {
+      @include transform(perspective(400px));
+    }
+  }
+}
+
+@mixin flipInY() {
+  .fx-flipInY {
+    @include prefixer(backface-visibility, visible);
+    @include animation-name(flipInY);
+  }
+  @include keyframes(flipInY) {
+    0% {
+      @include transform(perspective(400px) rotate3d(0, 1, 0, 90deg));
+      @include animation-timing-function(ease-in);
+      opacity: 0;
+    }
+    40% {
+      @include transform(perspective(400px) rotate3d(0, 1, 0, -20deg));
+      @include animation-timing-function(ease-in);
+    }
+    60% {
+      @include transform(perspective(400px) rotate3d(0, 1, 0, 10deg));
+      opacity: 1;
+    }
+    80% {
+      @include transform(perspective(400px) rotate3d(0, 1, 0, -5deg));
+    }
+    100% {
+      @include transform(perspective(400px));
+    }
+  }
+}
+
+@mixin flipOutX() {
+  .fx-flipOutX {
+    @include prefixer(backface-visibility, visible);
+    @include prefixer(animation-duration, .75s);
+    @include animation-name(flipOutX);
+  }
+  @include keyframes(flipOutX) {
+    0% {
+      @include transform(perspective(400px));
+    }
+    30% {
+      @include transform(perspective(400px) rotate3d(1, 0, 0, -20deg));
+      opacity: 1;
+    }
+    100% {
+      @include transform(perspective(400px) rotate3d(1, 0, 0, 90deg));
+      opacity: 0;
+    }
+  }
+}
+
+@mixin flipOutY() {
+  .fx-flipOutY {
+    @include prefixer(backface-visibility, visible);
+    @include prefixer(animation-duration, .75s);
+    @include animation-name(flipOutY);
+  }
+  @include keyframes(flipOutY) {
+    0% {
+      @include transform(perspective(400px));
+    }
+    30% {
+      @include transform(perspective(400px) rotate3d(0, 1, 0, -15deg));
+      opacity: 1;
+    }
+    100% {
+      @include transform(perspective(400px) rotate3d(0, 1, 0, 90deg));
+      opacity: 0;
+    }
+  }
+}

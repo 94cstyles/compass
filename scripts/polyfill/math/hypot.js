@@ -1,0 +1,1 @@
+Math.hypot=Math.hypot||function(){var e=0,t=arguments.length;for(var n=0;n<t;n++){if(arguments[n]===Infinity||arguments[n]===-Infinity)return Infinity;e+=arguments[n]*arguments[n]}return Math.sqrt(e)};

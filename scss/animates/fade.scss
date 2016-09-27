@@ -1,0 +1,100 @@
+@mixin fadeIn($transform:null,$name:fadeIn) {
+    .fx-#{$name} {
+        @include animation-name($name);
+    }
+    @include keyframes($name) {
+        0% {
+            opacity: 0;
+            @if $transform != null {
+                @include transform($transform);
+            }
+        }
+        100% {
+            opacity: 1;
+            @if $transform != null {
+                @include transform(none);
+            }
+        }
+    }
+}
+
+@mixin fadeInDown($move: -100%, $name: fadeInDown) {
+    @include fadeIn(translate3d(0, $move, 0), $name);
+}
+
+@mixin fadeInDownBig() {
+    @include fadeInDown(-2000px, fadeInDownBig);
+}
+
+@mixin fadeInLeft($move: -100%, $name: fadeInLeft) {
+    @include fadeIn(translate3d($move, 0, 0), $name);
+}
+
+@mixin fadeInLeftBig() {
+    @include fadeInLeft(-2000px, fadeInLeftBig);
+}
+
+@mixin fadeInRight($move: 100%, $name: fadeInRight) {
+    @include fadeIn(translate3d($move, 0, 0), $name);
+}
+
+@mixin fadeInRightBig() {
+    @include fadeInRight(2000px, fadeInRightBig);
+}
+
+@mixin fadeInUp($move: 100%, $name: fadeInUp) {
+    @include fadeIn(translate3d(0, $move, 0), $name);
+}
+
+@mixin fadeInUpBig() {
+    @include fadeInUp(2000px, fadeInUpBig);
+}
+
+@mixin fadeOut($transform:null,$name:fadeOut) {
+    .fx-#{$name} {
+        @include animation-name($name);
+    }
+    @include keyframes($name) {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            @if $transform != null {
+                @include transform($transform);
+            }
+        }
+    }
+}
+
+@mixin fadeOutDown($move: 100%, $name: fadeOutDown) {
+    @include fadeOut(translate3d(0, $move, 0), $name);
+}
+
+@mixin fadeOutDownBig() {
+    @include fadeOutDown(2000px, fadeOutDownBig);
+}
+
+@mixin fadeOutLeft($move: -100%, $name: fadeOutLeft) {
+    @include fadeOut(translate3d($move, 0, 0), $name);
+}
+
+@mixin fadeOutLeftBig() {
+    @include fadeOutLeft(-2000px, fadeOutLeftBig);
+}
+
+@mixin fadeOutRight($move: 100%, $name: fadeOutRight) {
+    @include fadeOut(translate3d($move, 0, 0), $name);
+}
+
+@mixin fadeOutRightBig() {
+    @include fadeOutRight(2000px, fadeOutRightBig);
+}
+
+@mixin fadeOutUp($move: -100%, $name: fadeOutUp) {
+    @include fadeOut(translate3d(0, $move, 0), $name);
+}
+
+@mixin fadeOutUpBig() {
+    @include fadeOut(-2000px, fadeOutUpBig);
+}

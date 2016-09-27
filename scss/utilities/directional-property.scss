@@ -1,0 +1,47 @@
+@charset "UTF-8";
+@mixin _directional-property($pre, $suf, $values, $additional: null) {
+    $top: $pre + "-top" + if($suf, "-#{$suf}", "");
+    $bottom: $pre + "-bottom" + if($suf, "-#{$suf}", "");
+    $left: $pre + "-left" + if($suf, "-#{$suf}", "");
+    $right: $pre + "-right" + if($suf, "-#{$suf}", "");
+    $all: $pre + if($suf, "-#{$suf}", "");
+    $values: _collapse-directionals($values);
+    @if _contains-falsy($values) {
+        @if nth($values, 1) {
+            #{$top}: nth($values, 1) $additional;
+        }
+        @if length($values) == 1 {
+            @if nth($values, 1) {
+                #{$right}: nth($values, 1) $additional;
+            }
+        } @else {
+            @if nth($values, 2) {
+                #{$right}: nth($values, 2) $additional;
+            }
+        }
+        @if length($values) == 2 {
+            @if nth($values, 1) {
+                #{$bottom}: nth($values, 1) $additional;
+            }
+            @if nth($values, 2) {
+                #{$left}: nth($values, 2) $additional;
+            }
+        } @else if length($values) == 3 {
+            @if nth($values, 3) {
+                #{$bottom}: nth($values, 3) $additional;
+            }
+            @if nth($values, 2) {
+                #{$left}: nth($values, 2) $additional;
+            }
+        } @else if length($values) == 4 {
+            @if nth($values, 3) {
+                #{$bottom}: nth($values, 3) $additional;
+            }
+            @if nth($values, 4) {
+                #{$left}: nth($values, 4) $additional;
+            }
+        }
+    } @else {
+        #{$all}: $values $additional;
+    }
+}

@@ -1,0 +1,10 @@
+@charset "UTF-8";
+@mixin font-face($font-family, $file-path, $file-formats: eot woff2 woff ttf svg) {
+    @font-face {
+        font-family: $font-family;
+        @if index($file-formats, eot) != null {
+            src: url("#{$file-path}.eot");
+        }
+        src: _font-source-declaration($font-family, $file-path, $file-formats);
+    }
+}

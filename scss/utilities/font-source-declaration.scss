@@ -1,0 +1,17 @@
+@charset "UTF-8";
+@function _font-source-declaration($font-family, $file-path, $file-formats) {
+    $src: ();
+    $formats-map: (
+            eot: url("#{$file-path}.eot?#iefix") format("embedded-opentype"),
+            woff2: url("#{$file-path}.woff2") format("woff2"),
+            woff: url("#{$file-path}.woff") format("woff"),
+            ttf: url("#{$file-path}.ttf") format("truetype"),
+            svg: url("#{$file-path}.svg##{$font-family}") format("svg")
+    );
+    @each $key, $values in $formats-map {
+        @if index($file-formats, $key) != null {
+            $src: append($src, $values, comma);
+        }
+    }
+    @return $src;
+}

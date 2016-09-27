@@ -1,0 +1,1 @@
+window.animationEnd=function(a,b,c){var d=function(e){c&&(a.removeEventListener("webkitAnimationEnd",d,!1),a.removeEventListener("animationend",d,!1)),b(e)};a.addEventListener("webkitAnimationEnd",d,!1),a.addEventListener("animationend",d,!1)};

@@ -1,0 +1,1 @@
+Array.prototype.some||(Array.prototype.some=function(e){"use strict";if(this==null)throw new TypeError("Array.prototype.some called on null or undefined");if(typeof e!="function")throw new TypeError;var t=Object(this),n=t.length>>>0,r=arguments.length>=2?arguments[1]:void 0;for(var i=0;i<n;i++)if(i in t&&e.call(r,t[i],i,t))return!0;return!1});

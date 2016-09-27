@@ -1,0 +1,1 @@
+Array.prototype.every||(Array.prototype.every=function(e,t){"use strict";var n,r;if(this==null)throw new TypeError("this is null or not defined");var i=Object(this),s=i.length>>>0;if(typeof e!="function")throw new TypeError;arguments.length>1&&(n=t),r=0;while(r<s){var o;if(r in i){o=i[r];var u=e.call(n,o,r,i);if(!u)return!1}r++}return!0});

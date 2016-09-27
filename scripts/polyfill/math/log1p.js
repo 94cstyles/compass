@@ -1,0 +1,1 @@
+Math.log1p=Math.log1p||function(e){return Math.log(1+e)};

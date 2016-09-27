@@ -1,0 +1,1 @@
+Math.sinh=Math.sinh||function(e){return(Math.exp(e)-Math.exp(-e))/2};

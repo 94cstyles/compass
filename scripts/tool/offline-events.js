@@ -1,0 +1,2 @@
+// https://github.com/remy/polyfills/blob/master/offline-events.js
+!function(){function a(a){var b=document.createEvent("HTMLEvents");b.initEvent(a,!0,!0),b.eventName=a,(document.body||window).dispatchEvent(b)}function b(){var a=new XMLHttpRequest;a.open("HEAD","/",!1);try{a.send(),c=!0}catch(b){c=!1}return c}var c=!0,d=!0;navigator.__defineGetter__("onLine",b),b(),c===!1&&(d=!1,a("offline")),setInterval(function(){b(),c!==d&&(a(c?"online":"offline"),d=c)},5e3)}();

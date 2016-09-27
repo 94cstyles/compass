@@ -1,0 +1,16 @@
+{
+  "name": "compass",
+  "version": "0.0.2",
+  "description": "浏览器polyfills，scss样式开发环境，使网站设计易于实现，更容易维护。",
+  "main": "scss/base.scss",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TOP-Chao/compass.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TOP-Chao/compass/issues"
+  },
+  "homepage": "https://github.com/TOP-Chao/compass#readme"
+}

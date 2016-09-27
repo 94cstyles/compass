@@ -1,0 +1,4 @@
+@charset "UTF-8";
+@mixin padding($values) {
+    @include _directional-property(padding, false, $values);
+}
