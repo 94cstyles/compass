@@ -1,8 +1,53 @@
 @charset "UTF-8";
 
 @import "settings";
-@import "utilities/*";
-@import "mixins/*";
-@import "functions/*";
-@import "animates/*";
-@import "addons/*";
+
+@import "utilities/collapse-directionals";
+@import "utilities/contains-falsy";
+@import "utilities/directional-property";
+@import "utilities/font-source-declaration";
+@import "utilities/is-length";
+@import "utilities/map";
+@import "utilities/transition-property-name";
+@import "utilities/unpack-shorthand";
+
+@import "mixins/flex-box";
+@import "mixins/prefixer";
+@import "mixins/vendor";
+
+@import "functions/calc-percent";
+@import "functions/color";
+@import "functions/convert";
+@import "functions/placeholder-image";
+@import "functions/value-prefixer";
+@import "functions/x-vendor-prefixes";
+@import "functions/z-index";
+
+
+@import "animates/attention";
+@import "animates/bounce";
+@import "animates/fade";
+@import "animates/flip";
+@import "animates/lightSpeed";
+@import "animates/rotate";
+@import "animates/slide";
+@import "animates/specials";
+@import "animates/zoom";
+
+
+@import "addons/background-transparent";
+@import "addons/border";
+@import "addons/center-translate";
+@import "addons/clearfix";
+@import "addons/hidden";
+@import "addons/inline-block";
+@import "addons/margin";
+@import "addons/media";
+@import "addons/opacity";
+@import "addons/padding";
+@import "addons/parent";
+@import "addons/position";
+@import "addons/quantity-queries";
+@import "addons/retina-image";
+@import "addons/text";
+@import "addons/triangle";
