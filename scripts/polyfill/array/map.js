@@ -1,1 +1,0 @@
-Array.prototype.map||(Array.prototype.map=function(e,t){var n,r,i;if(this==null)throw new TypeError(" this is null or not defined");var s=Object(this),o=s.length>>>0;if(typeof e!="function")throw new TypeError(e+" is not a function");arguments.length>1&&(n=t),r=new Array(o),i=0;while(i<o){var u,a;i in s&&(u=s[i],a=e.call(n,u,i,s),r[i]=a),i++}return r});

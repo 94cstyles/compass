@@ -1,1 +1,0 @@
-window.transitionEnd=function(a,b,c){var d=function(e){c&&(a.removeEventListener("webkitTransitionEnd",d,!1),a.removeEventListener("transitionend",d,!1)),b(e)};a.addEventListener("webkitTransitionEnd",d,!1),a.addEventListener("transitionend",d,!1)};

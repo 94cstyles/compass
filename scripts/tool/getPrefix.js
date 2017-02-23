@@ -1,2 +1,0 @@
-// https://addyosmani.com/blog/writing-polyfills/
-function getPrefix(a,b){for(var e,c=["moz","webkit","khtml","o","ms"],d=a.charAt(0).toUpperCase()+a.slice(1),f=c.length,g=null;f--;)g=c[f],b.toString().indexOf("style")&&(g=g.charAt(0).toUpperCase()+g.slice(1)),g+d in b&&(e=g);return a in b&&(e=a),e?"-"+e.toLowerCase()+"-":""}

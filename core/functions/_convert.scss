@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+// 去掉数值的单位 10px -> 10
+@function _strip-units($number) {
+    @if type-of($number) != number {
+        @warn '#{$number} is not a number.';
+        @return $number;
+    }
+    @return ($number / ($number * 0 + 1));
+}
+
+// 设计图设计转换为px
+@function px($px) {
+    @if $env == 'mobile' {
+        @if not unitless($px) {
+            $px: _strip-units($px);
+        }
+        @return $px / $design-ratio * 1px;
+    } @else {
+        @return $px;
+    }
+}
+
+// 设计图设计转换为rem
+// http://www.sassmeister.com/gist/fca8913bfd9f500982671c10af0d3c0d
+@function rem($px) {
+    @if $env == 'mobile' {
+        @if not unitless($px) {
+            $px: _strip-units($px);
+        }
+        $width: $design-width;
+        @if not unitless($width) {
+            $width: _strip-units($width);
+        }
+        @return $px / ($width / 10) * 1rem;
+    } @else {
+        @return $px;
+    }
+}

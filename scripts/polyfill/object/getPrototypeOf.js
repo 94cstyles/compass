@@ -1,2 +1,0 @@
-// https://github.com/kbjr/polyfill.js/blob/master/client/polyfills/getprototypeof.js
-Object.getPrototypeOf||(Object.getPrototypeOf=function(a){var b=a.__proto__;return b||(b=a.constructor?a.constructor.prototype:Object.prototype),b});

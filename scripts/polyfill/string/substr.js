@@ -1,1 +1,0 @@
-"ab".substr(-1)!="b"&&(String.prototype.substr=function(e){return function(t,n){return e.call(this,t<0?this.length+t:t,n)}}(String.prototype.substr));

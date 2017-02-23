@@ -1,1 +1,0 @@
-Math.atanh=Math.atanh||function(e){return Math.log((1+e)/(1-e))/2};

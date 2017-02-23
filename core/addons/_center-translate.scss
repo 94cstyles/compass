@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+// 元素居中
+@mixin center-translate($direction: both) {
+    position: absolute;
+    @if $direction == both {
+        top: 50%;
+        left: 50%;
+        @include transform(translate(-50%, -50%));
+    } @else if $direction == horizontal {
+        left: 50%;
+        @include transform(translateX(-50%));
+    } @else if $direction == vertical {
+        top: 50%;
+        @include transform(translateY(-50%));
+    }
+}
+
+// 元素居中
+@mixin center-flex($justify:center, $align: center) {
+    display: flex;
+
+    @if ($align !=false) {
+        align-items: $align;
+    }
+    @if ($justify !=false) {
+        justify-content: $justify;
+    }
+}
+
+// 盒子居中
+@mixin center-box($width: null, $height: $width) {
+    @if $width and $height {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: $width;
+        height: $height;
+        @include margin(($height / -2) null null ($width / -2));
+    } @else {
+        @include center-translate();
+    }
+}

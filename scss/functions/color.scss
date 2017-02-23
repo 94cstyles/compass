@@ -1,9 +1,0 @@
-$color: () !default;
-
-@function color($layers...) {
-    @if not map-has-nested-keys($color, $layers...) {
-        @warn "没有在$color中找到对应的key `#{inspect($layers...)}`";
-    }
-
-    @return map-deep-get($color, $layers...);
-}

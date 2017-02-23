@@ -1,1 +1,0 @@
-Array.prototype.forEach||(Array.prototype.forEach=function(e,t){var n,r;if(this==null)throw new TypeError(" this is null or not defined");var i=Object(this),s=i.length>>>0;if(typeof e!="function")throw new TypeError(e+" is not a function");arguments.length>1&&(n=t),r=0;while(r<s){var o;r in i&&(o=i[r],e.call(n,o,r,i)),r++}});

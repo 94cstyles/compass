@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+// 单行文字截取
+@mixin ellipsis() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+// 多行文字截取
+@mixin lines-ellipsis($line, $height: null) {
+    display: -webkit-box;
+    display: box;
+    -webkit-line-clamp: $line;
+    line-clamp: $line;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    overflow: hidden;
+    @if $height {
+        max-height: $height;
+    }
+}
+
+// 强制换行
+@mixin word-wrap() {
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+// 强制不换行
+@mixin nowrap() {
+    word-wrap: normal;
+    white-space: nowrap;
+}

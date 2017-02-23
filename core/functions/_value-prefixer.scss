@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+// value前缀添加
+// 来源: https://github.com/thoughtbot/bourbon/blob/master/core/bourbon/library/_value-prefixer.scss
+// 测试: http://www.sassmeister.com/gist/8076c8d65b65ebb3d85cae4ba410d090
+@mixin value-prefixer($property, $value, $prefixes: ()) {
+    @each $prefix in $prefixes {
+        #{$property}: #{"-" + $prefix + "-" + $value};
+    }
+    #{$property}: $value;
+}

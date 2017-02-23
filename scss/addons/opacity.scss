@@ -1,8 +1,0 @@
-@charset "UTF-8";
-@mixin opacity($opacity: .65) {
-    opacity: $opacity;
-    @if $support-for-ie {
-        $opacity-ie: $opacity * 100;
-        filter: alpha(opacity=$opacity-ie);
-    }
-}

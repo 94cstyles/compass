@@ -1,1 +1,0 @@
-Object.setPrototypeOf=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e};

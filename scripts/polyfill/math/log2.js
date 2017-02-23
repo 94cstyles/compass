@@ -1,1 +1,0 @@
-Math.log2=Math.log2||function(e){return Math.log(e)/Math.LN2};

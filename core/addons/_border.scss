@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+// 设置border $hairlines:true 手机1像素
+@mixin border($width, $style, $color, $hairlines: false) {
+    @include _directional-property(border, null, $width, $style $color);
+    @if $hairlines {
+        .hairlines & {
+            $width: _collapse-directionals($width, 0.5);
+            @include _directional-property(border, width, $width);
+        }
+    }
+}
+
+@mixin border-color($values...) {
+    @include _directional-property(border, color, $values...);
+}
+
+@mixin border-top-radius($radii) {
+    border-top-left-radius: $radii;
+    border-top-right-radius: $radii;
+}
+
+@mixin border-right-radius($radii) {
+    border-bottom-right-radius: $radii;
+    border-top-right-radius: $radii;
+}
+
+@mixin border-bottom-radius($radii) {
+    border-bottom-left-radius: $radii;
+    border-bottom-right-radius: $radii;
+}
+
+@mixin border-left-radius($radii) {
+    border-bottom-left-radius: $radii;
+    border-top-left-radius: $radii;
+}
+
+@mixin border-style($values...) {
+    @include _directional-property(border, style, $values...);
+}
+
+@mixin border-width($values, $hairlines: false) {
+    @include _directional-property(border, width, $values);
+    @if $hairlines {
+        .hairlines & {
+            $values: _collapse-directionals($values, 0.5);
+            @include _directional-property(border, width, $values);
+        }
+    }
+}

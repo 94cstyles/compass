@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+// 计算百分比
+// 来源: https://github.com/W3cplus/SassMagic/blob/master/src/functions/_calc-percent.scss
+// 测试: http://www.sassmeister.com/gist/49f7777b82ea62a55155e4fafea791c3
+@function calc-percent($target, $context) {
+    @return $target / $context * 100%;
+}

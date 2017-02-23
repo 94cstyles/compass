@@ -1,1 +1,0 @@
-Math.log10=Math.log10||function(e){return Math.log(e)/Math.LN10};

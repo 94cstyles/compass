@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+// 获取浏览器前缀
+// 来源: https://gist.github.com/terkel/4983714
+// 测试: http://www.sassmeister.com/gist/a7e5bb6af8c0d36125aebcd1a4605a03
+// Animations: http://www.w3.org/TR/css3-animations/
+// appearance (Non-standard): https://developer.mozilla.org/en-US/docs/CSS/-moz-appearance
+// Border Images: http://www.w3.org/TR/css3-background/#border-images
+// box-shadow: http://www.w3.org/TR/css3-background/#the-box-shadow
+// box-sizing: http://www.w3.org/TR/css3-ui/#box-sizing
+// calc: http://www.w3.org/TR/css3-values/#calc-notation
+// Multi-column Layout: http://www.w3.org/TR/css3-multicol/
+// Filter Effects: http://www.w3.org/TR/filter-effects/
+// Flexible Box Layout: http://www.w3.org/TR/css3-flexbox/
+// font-feature-settings: http://www.w3.org/TR/css3-fonts/#font-feature-settings-prop
+// Gradients: http://www.w3.org/TR/css3-images/#gradients
+// hyphens: http://www.w3.org/TR/css3-text/#hyphenation
+// Sizing Images and Objects: http://www.w3.org/TR/css3-images/#sizing
+// text-size-adjust (Non-standard): http://dev.w3.org/csswg/css-size-adjust/
+// Transforms: http://www.w3.org/TR/css3-transforms/
+// Transitions: http://www.w3.org/TR/css3-transitions/
+// user-select (Non-standard): https://developer.mozilla.org/ja/docs/CSS/user-select
+@function x-vendor-prefixes ($key) {
+    $features: at-keyframes (webkit),
+    animation (webkit),
+    animation-name (webkit),
+    animation-duration (webkit),
+    animation-timing-function (webkit),
+    animation-iteration-count (webkit),
+    animation-direction (webkit),
+    animation-play-state (webkit),
+    animation-delay (webkit),
+    animation-fill-mode (webkit),
+    appearance (webkit moz),
+    border-image (webkit o),
+    border-image-source (webkit o),
+    border-image-slice (webkit o),
+    border-image-width (webkit o),
+    border-image-outset (webkit o),
+    border-image-repeat (webkit o),
+    box-shadow (webkit),
+    box-sizing (webkit moz),
+    calc (webkit),
+    column-width (webkit moz),
+    column-count (webkit moz),
+    column-gap (webkit moz),
+    column-rule (webkit moz),
+    column-rule-width (webkit moz),
+    column-rule-style (webkit moz),
+    column-rule-color (webkit moz),
+    column-span (webkit moz),
+    column-fill (webkit moz),
+    columns (webkit moz),
+    filter (webkit),
+    flex (webkit moz ms),
+    font-feature-settings (webkit moz),
+    linear-gradient (webkit),
+    radial-gradient (webkit),
+    hyphens (webkit moz ms),
+    object-fit (o),
+    object-position (o),
+    text-size-adjust (webkit ms),
+    transform (webkit ms),
+    transform-origin (webkit ms),
+    transform-style (webkit),
+    perspective (webkit),
+    perspective-origin (webkit),
+    backface-visibility (webkit),
+    transition (webkit),
+    transition-delay (webkit),
+    transition-duration (webkit),
+    transition-property (webkit),
+    transition-timing-function (webkit),
+    user-select (webkit moz ms);
+
+    @each $feature in $features {
+        @if index($feature, $key) == 1 {
+            @return nth($feature, 2);
+        }
+    }
+    @return ();
+}

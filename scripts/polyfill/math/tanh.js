@@ -1,1 +1,0 @@
-Math.tanh=Math.tanh||function(e){return e===Infinity?1:e===-Infinity?-1:(Math.exp(e)-Math.exp(-e))/(Math.exp(e)+Math.exp(-e))};

@@ -1,0 +1,253 @@
+@charset "UTF-8";
+
+@mixin animation($animations...) {
+    @include prefixer(animation, $animations);
+}
+
+@mixin animation-name($names...) {
+    @include prefixer(animation-name, $names);
+}
+
+@mixin animation-duration($times...) {
+    @include prefixer(animation-duration, $times);
+}
+
+@mixin animation-timing-function($motions...) {
+    // ease | linear | ease-in | ease-out | ease-in-out
+    @include prefixer(animation-timing-function, $motions);
+}
+
+@mixin animation-iteration-count($values...) {
+    // infinite | <number>
+    @include prefixer(animation-iteration-count, $values);
+}
+
+@mixin animation-direction($directions...) {
+    // normal | alternate
+    @include prefixer(animation-direction, $directions);
+}
+
+@mixin animation-play-state($states...) {
+    // running | paused
+    @include prefixer(animation-play-state, $states);
+}
+
+@mixin animation-delay($times...) {
+    @include prefixer(animation-delay, $times);
+}
+
+@mixin animation-fill-mode($modes...) {
+    // none | forwards | backwards | both
+    @include prefixer(animation-fill-mode, $modes);
+}
+
+@mixin box-sizing($value: border-box) {
+    @include prefixer(box-sizing, $value);
+}
+
+@mixin columns($arg: auto) {
+    // <column-count> || <column-width>
+    @include prefixer(columns, $arg);
+}
+
+@mixin column-count($int: auto) {
+    // auto || integer
+    @include prefixer(column-count, $int);
+}
+
+@mixin column-gap($length: normal) {
+    // normal || length
+    @include prefixer(column-gap, $length);
+}
+
+@mixin column-fill($arg: auto) {
+    // auto || length
+    @include prefixer(column-fill, $arg);
+}
+
+@mixin column-rule($arg) {
+    // <border-width> || <border-style> || <color>
+    @include prefixer(column-rule, $arg);
+}
+
+@mixin column-rule-color($color) {
+    @include prefixer(column-rule-color, $color);
+}
+
+@mixin column-rule-style($style: none) {
+    // none | hidden | dashed | dotted | double | groove | inset | inset | outset | ridge | solid
+    @include prefixer(column-rule-style, $style);
+}
+
+@mixin column-rule-width($width: none) {
+    @include prefixer(column-rule-width, $width);
+}
+
+@mixin column-span($arg: none) {
+    // none || all
+    @include prefixer(column-span, $arg);
+}
+
+@mixin column-width($length: auto) {
+    // auto || length
+    @include prefixer(column-width, $length);
+}
+
+@mixin appearance($value) {
+    @include prefixer(appearance, $value);
+}
+
+@mixin backface-visibility($visibility) {
+    @include prefixer(backface-visibility, $visibility);
+}
+
+@mixin calc($property, $value) {
+    #{$property}: -webkit-calc(#{$value});
+    #{$property}: calc(#{$value});
+}
+
+@mixin filter($function: none) {
+    // <filter-function> [<filter-function]* | none
+    @include prefixer(filter, $function);
+}
+
+@mixin font-feature-settings($settings...) {
+    @if length($settings) == 0 {
+        $settings: none;
+    }
+    @include prefixer(font-feature-settings, $settings);
+}
+
+@mixin hyphens($hyphenation: none) {
+    // none | manual | auto
+    @include prefixer(hyphens, $hyphenation);
+}
+
+@mixin perspective($depth: none) {
+    // none | <length>
+    @include prefixer(perspective, $depth);
+}
+
+@mixin perspective-origin($value: 50% 50%) {
+    @include prefixer(perspective-origin, $value);
+}
+
+@mixin user-select($value: none) {
+    @include prefixer(user-select, $value);
+}
+
+@mixin transform($property: none) {
+    // none | <transform-function>
+    @include prefixer(transform, $property);
+}
+
+@mixin transform-origin($axes: 50%) {
+    // x-axis - left | center | right  | length | %
+    // y-axis - top  | center | bottom | length | %
+    // z-axis -                          length
+    @include prefixer(transform-origin, $axes);
+}
+
+@mixin transform-style($style: flat) {
+    @include prefixer(transform-style, $style);
+}
+
+@mixin transition($properties...) {
+    $needs-prefixes: false;
+    $webkit: ();
+    $spec: ();
+
+    @each $list in $properties {
+        @if nth($list, 1) == "transform" {
+            $needs-prefixes: true;
+            $list1: -webkit-transform;
+            $list2: ();
+
+            @each $var in $list {
+                $list2: join($list2, $var);
+
+                @if $var != "transform" {
+                    $list1: join($list1, $var);
+                }
+            }
+
+            $webkit: append($webkit, $list1);
+            $spec: append($spec, $list2);
+        } @else {
+            $webkit: append($webkit, $list, comma);
+            $spec: append($spec, $list, comma);
+        }
+    }
+
+    @if $needs-prefixes {
+        -webkit-transition: $webkit;
+        transition: $spec;
+    } @else {
+        @if length($properties) >= 1 {
+            @include prefixer(transition, $properties);
+        } @else {
+            @include prefixer(transition, $transition-default);
+        }
+    }
+}
+
+@mixin transition-property($properties...) {
+    -webkit-transition-property: _transition-property-names($properties, "webkit");
+    transition-property: _transition-property-names($properties, false);
+}
+
+@mixin transition-duration($times...) {
+    @include prefixer(transition-duration, $times);
+}
+
+@mixin transition-timing-function($motions...) {
+    // ease | linear | ease-in | ease-out | ease-in-out | cubic-bezier()
+    @include prefixer(transition-timing-function, $motions);
+}
+
+@mixin transition-delay($times...) {
+    @include prefixer(transition-delay, $times);
+}
+
+@mixin placeholder() {
+    $placeholders: ":-webkit-input" ":-moz" "-ms-input";
+    @each $placeholder in $placeholders {
+        &:#{$placeholder}-placeholder {
+            @content;
+            @if $placeholder == ':-moz' {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name}{
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+@mixin image-rendering($mode:auto) {
+    @if ($mode == crisp-edges) {
+        -ms-interpolation-mode: nearest-neighbor; // IE8+
+        image-rendering: -moz-crisp-edges;
+        image-rendering: -o-crisp-edges;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    } @else {
+        image-rendering: $mode;
+    }
+}
+
+@mixin font-face($font-family, $file-path, $file-formats: eot woff2 woff ttf svg) {
+    @font-face {
+        font-family: $font-family;
+        @if index($file-formats, eot) != null {
+            src: url("#{$file-path}.eot");
+        }
+        src: _font-source-declaration($font-family, $file-path, $file-formats);
+    }
+}

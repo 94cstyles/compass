@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+// 清除浮动
+@mixin clearfix() {
+    @if $env == 'pc' and $support-for-ie {
+        *zoom: 1;
+    }
+
+    &::after {
+        clear: both;
+        content: "";
+        display: table;
+    }
+}

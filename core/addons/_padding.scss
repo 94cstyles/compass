@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+// 快速设置内边距
+// 来源: https://github.com/thoughtbot/bourbon/blob/master/core/bourbon/library/_padding.scss
+@mixin padding($values) {
+    @include _directional-property(padding, false, $values);
+}

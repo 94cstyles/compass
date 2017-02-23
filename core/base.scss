@@ -1,0 +1,97 @@
+@charset "UTF-8";
+@import "compass";
+@import "normalize";
+
+* {
+    outline: none
+}
+
+html, body {
+    width: 100%;
+    height: 100%
+}
+
+img, video {
+    height: auto;
+    max-width: 100%;
+    border: 0 none;
+    vertical-align: bottom
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+a {
+    text-decoration: none;
+    -webkit-text-decoration-skip: objects
+}
+
+a, button, img, input[type=button], input[type=submit], input[type=reset] {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0)
+}
+
+dd {
+    margin-left: 0;
+}
+
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+body, button, input, select, textarea {
+    color: #333;
+    font-size: 12px;
+    font-family: $font-family-default;
+    line-height: 1.5
+}
+
+//function
+.f-cb, .f-cb li {
+    @include clearfix();
+}
+
+.f-ib {
+    @include inline-block();
+}
+
+.f-wsn {
+    @include nowrap();
+}
+
+.f-wwb {
+    @include word-wrap();
+}
+
+.f-toe {
+    @include ellipsis();
+}
+
+.f-ma {
+    @include margin(null auto);
+}
+
+.f-box {
+    @include box-sizing();
+}
+
+.f-usn {
+    @include user-select();
+}
+
+//media 移动开发适配
+@if $env == mobile {
+    html {
+        font-size: 32px;
+    }
+    @each $width in $device-width {
+        @media only screen and (min-width: $width) {
+            html {
+                font-size: $width / 10;
+            }
+        }
+    }
+}

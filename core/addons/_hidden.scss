@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+// 隐藏屏幕阅读器和浏览器
+@mixin hidden() {
+    display: none !important;
+    visibility: hidden;
+}
+
+// 隐藏只有视觉,但它用于屏幕阅读器
+@mixin hidden-visually() {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+// 隐藏文字
+@mixin hide-text() {
+    overflow: hidden;
+    text-indent: 101%;
+    white-space: nowrap;
+}

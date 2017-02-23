@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+// 补全浏览器前缀
+// 测试: http://www.sassmeister.com/gist/6426461c1fc53ff3c57fe5a2ba411445
+@mixin prefixer($property, $value) {
+    $prefixes: x-vendor-prefixes($property);
+    @each $prefix in $prefixes {
+        @if $prefix == webkit {
+            -webkit-#{$property}: $value;
+        } @else if $prefix == moz {
+            -moz-#{$property}: $value;
+        } @else if $prefix == ms {
+            -ms-#{$property}: $value;
+        } @else if $prefix == o {
+            -o-#{$property}: $value;
+        }
+    }
+    #{$property}: $value;
+}

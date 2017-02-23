@@ -1,1 +1,0 @@
-Number.isFinite=Number.isFinite||function(e){return typeof e=="number"&&isFinite(e)};

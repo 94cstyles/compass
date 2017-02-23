@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+// 占位图
+// 来源: https://gist.github.com/terkel/3bfd05a0cadd275e453054a26a829cce
+// 测试: http://www.sassmeister.com/gist/1c1ed64995290fa1d9cf6a879aef93d4
+@function placeholder-image($width, $height: $width) {
+    $size: $width + "/" + $height;
+    $src: "https://unsplash.it/" + $size + "/?random=" + random();
+    @return url($src);
+}

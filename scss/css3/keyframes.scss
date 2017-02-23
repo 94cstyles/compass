@@ -1,9 +1,0 @@
-@charset "UTF-8";
-@mixin keyframes($name) {
-    @-webkit-keyframes #{$name}{
-        @content;
-    }
-    @keyframes #{$name} {
-        @content;
-    }
-}

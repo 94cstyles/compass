@@ -1,1 +1,0 @@
-function getUrlParams(){for(var b,a={},c=/\+/g,d=/([^&=]+)=?([^&]*)/g,e=function(a){return decodeURIComponent(a.replace(c," "))},f=window.location.search.substring(1);b=d.exec(f);)a[e(b[1])]=e(b[2]);return a};
