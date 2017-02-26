@@ -5,7 +5,7 @@ $env: mobile !default;
 // 常用移动设备宽度(device-width)
 $device-width: (320px, 360px, 375px, 384px, 400px, 411px, 414px, 435px, 480px, 540px) !default;
 // 是否支持IE pc环境
-$support-for-ie: false !default;
+$support-for-ie: true !default;
 // 设计图比例大小 mobile环境
 $design-ratio: 2 !default;
 // 设计图宽度 mobile环境
