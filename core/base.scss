@@ -89,8 +89,10 @@ body, button, input, select, textarea {
     }
     @each $width in $device-width {
         @media only screen and (min-width: $width) {
-            html {
-                font-size: $width / 10;
+            @if $width > 320px {
+                html {
+                    font-size: $width / 10;
+                }
             }
         }
     }

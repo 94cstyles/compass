@@ -13,7 +13,7 @@ $design-width: 750 !default;
 // transition默认属性
 $transition-default: all .3s ease-out 0s !default;
 // 默认字体
-$font-family-default: -apple-system, "Helvetica Neue", "Microsoft Yahei", sans-serif;;
+$font-family-default: -apple-system, "Helvetica Neue", "Helvetica", "STHeiTi", "Microsoft Yahei", Arial, sans-serif !default;
 // 颜色管理容器
 $color: () !default;
 // 层级管理容器
