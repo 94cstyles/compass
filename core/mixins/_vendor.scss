@@ -45,6 +45,10 @@
     @include prefixer(box-sizing, $value);
 }
 
+@mixin box-shadow($value) {
+    @include prefixer(box-shadow, $value);
+}
+
 @mixin columns($arg: auto) {
     // <column-count> || <column-width>
     @include prefixer(columns, $arg);
