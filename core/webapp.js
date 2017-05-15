@@ -13,7 +13,7 @@
     }
 
     function _() {
-      document.documentElement.style.fontSize = Math.max(document.documentElement.clientWidth, 540) / 10
+      document.documentElement.style.fontSize = (Math.min(document.documentElement.clientWidth, 540) / 10) + 'px'
     }
     window.addEventListener('resize', _)
     _()
