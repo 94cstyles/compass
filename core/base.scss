@@ -6,6 +6,10 @@
     outline: none
 }
 
+html {
+    font-size: 32px;
+}
+
 html, body {
     width: 100%;
     height: 100%
@@ -80,20 +84,4 @@ body, button, input, select, textarea {
 
 .f-usn {
     @include user-select();
-}
-
-//media 移动开发适配
-@if $env == mobile {
-    html {
-        font-size: 32px;
-    }
-    @each $width in $device-width {
-        @media only screen and (min-width: $width) {
-            @if $width > 320px {
-                html {
-                    font-size: $width / 10;
-                }
-            }
-        }
-    }
 }

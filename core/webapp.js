@@ -8,9 +8,15 @@
         var div = document.createElement('div');
         div.style.border = '.5px solid transparent';
         doc.appendChild(div);
-        if (div.offsetHeight == 1) doc.classList.add('hairlines');
+        if (div.offsetHeight === 1) doc.classList.add('hairlines');
         doc.removeChild(div);
     }
+
+    function _() {
+      document.documentElement.style.fontSize = Math.max(document.documentElement.clientWidth, 540) / 10
+    }
+    window.addEventListener('resize', _)
+    _()
 
     document.addEventListener('touchstart', function () {
     }, false);
